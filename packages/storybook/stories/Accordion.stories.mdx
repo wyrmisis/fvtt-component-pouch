@@ -1,0 +1,178 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { html } from 'lit';
+import { Accordion, AccordionItem } from "@component-pouch/accordion";
+
+<Meta
+  title="Components/Accordion"
+  component="pouch-accordion"
+  argTypes={{
+    clamped: {
+      name: "Clamped",
+      description: "Is this accordion limited to a single expanded element at a time?"
+    }
+  }} />
+
+export const Template = ({ clamped }) => html`
+  <pouch-accordion .clamped=${clamped} >
+    <pouch-accordion-item title="Simple Item 1">
+      Block of content 1
+    </pouch-accordion-item>
+    <pouch-accordion-item title="Simple Item 2">
+      Block of content 2
+    </pouch-accordion-item>
+    <pouch-accordion-item title="Simple Item 3">
+      Block of content 3
+    </pouch-accordion-item>
+  </pouch-accordion>
+`;
+
+export const FormTemplate = ({ clamped }) => html`
+  <style>
+    .input-group__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .input-group__item {
+      display: grid;
+      align-items: end;
+      grid-template-rows: 1fr 1fr;
+    }
+    .input-group__row--full {
+      grid-template-columns: 1fr;
+    }
+  </style>
+  <pouch-accordion .clamped=${clamped} >
+    <pouch-accordion-item title="Simple Item">
+      Block of content
+    </pouch-accordion-item>
+    <pouch-accordion-item title="Form Item" aria-expanded>
+      <form>
+        <div class="input-group__row">
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+        </div>
+        <div class="input-group__row">
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+          <div class="input-group__item">
+            <label>Input</label>
+            <input type="text" />
+          </div>
+        </div>
+        <div class="input-group__row input-group__row--full">
+          <div class="input-group__item">
+            <label>Input</label>
+            <textarea></textarea>
+          </div>
+        </div>
+      </form>
+    </pouch-accordion-item>
+  </pouch-accordion>
+`;
+
+export const StyledTemplate = ({ clamped }) => html`
+  <style>
+    .pretty {
+      --accordion-heading-background-color: #D6B7ED;
+      --accordion-heading-font-color: #905EEB;
+      --accordion-body-background-color: #EDBAB7;
+      --accordion-body-font-color: #EB5E78;
+    }
+    .pretty::part(title) {
+      font-weight: bold;
+    }
+  </style>
+  <pouch-accordion .clamped=${clamped} >
+    <pouch-accordion-item title="Simple Item">
+      Block of content
+    </pouch-accordion-item>
+    <pouch-accordion-item title="Styled Item" class="pretty">
+      Fancy Styled Component
+    </pouch-accordion-item>
+  </pouch-accordion>
+`;
+
+# Accordion
+
+`<pouch-accordion />` is a component that, given at least one `<pouch-accordion-items />`, will create an expandable vertical UI element.
+
+## Properties
+
+### `pouch-accordion`
+
+| Name    | Type      | Description                                                | Default |
+| ------- | --------- | ---------------------------------------------------------- | ------- |
+| clamped | `boolean` | If true, the accordion will only open one panel at a time. | `false` |
+
+### `pouch-accordion-item`
+
+| Name            | Type       | Description                                              | Default         |
+| --------------- | ---------  | -------------------------------------------------------  | --------------- |
+| title           | `string`   | The title displayed inside the accordion item's heading. | `Missing Title` |
+| aria-expanded   | `boolean`  | Determines if the accordion item is expanded.            | `false`         |
+
+## Slots
+
+### `pouch-accordion`
+
+| Name    | Description                                              | Default                   |
+| ------- | -------------------------------------------------------- | ------------------------- |
+| Default | A container for the list of `<pouch-accordion-items />`. | `Missing accordion items` |
+
+### `pouch-accordion-item`
+
+| Name    | Description                                                                                                      | Default           |
+| ------- | ---------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Default | The accordion item's body. It can contain anything from a line of text to more complex compositions, like forms. | `Missing Content` |
+
+
+
+## Examples
+
+### A simple accordion
+
+<Canvas>
+  <Story name="Default" args={{ clamped: false }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Styling the accordion
+
+<Canvas>
+  <Story name="With styling" args={{ clamped: false }}>
+    {StyledTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Displaying form elements
+
+<Canvas>
+  <Story name="With a form" args={{ clamped: false }}>
+    {FormTemplate.bind({})}
+  </Story>
+</Canvas>
