@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { html } from 'lit';
+import { Typeahead } from "@component-pouch/typeahead";
+
+<Meta
+  title="Components/Typeahead"
+  component="pouch-typeahead" />
+
+export const Template = ({ options }) => html`
+  <form>
+    <pouch-typeahead .options=${options} />
+  </form>
+`;
+
+export const AllSelectedTemplate = ({ options, value }) => html`
+  <form>
+    <pouch-typeahead
+      .options=${options}
+      value="${value}"
+      @change="${(e) => console.info(e.target.value)}" />
+  </form>
+`;
+
+
+<Canvas>
+  <Story name="Default" args={{
+    options: {
+      tag1: "Tag One",
+      tag2: "Tag 2: Tag Harder",
+      tag3: "Tag Hard With a Vengeance"
+    }
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+
+<Canvas>
+  <Story name="With selected options" args={{
+    options: {
+      tag1: "Tag One",
+      tag2: "Tag 2: Tag Harder",
+      tag3: "Tag Hard With a Vengeance"
+    },
+    value: "tag1,tag2"
+  }}>
+    {AllSelectedTemplate.bind({})}
+  </Story>
+</Canvas>
