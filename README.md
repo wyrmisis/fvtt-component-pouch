@@ -29,6 +29,11 @@ Using a component is pretty easy:
 </section>
 ```
 
+## Component List
+
+* [pouch-accordion](https://wyrmisis.github.io/fvtt-component-pouch/?path=/story/components-accordion--default-story)
+* [pouch-typeahead](https://wyrmisis.github.io/fvtt-component-pouch/?path=/story/components-typeahead--default-story)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
