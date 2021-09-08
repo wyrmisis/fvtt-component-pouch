@@ -1,0 +1,16 @@
+{
+  "manifestPlusVersion": "1.2.0",
+  "name": "component-pouch",
+  "title": "Component Pouch",
+  "version": "0.0.3",
+  "description": "A set of Web Components meant to help accelerate module and system development.",
+  "author": "wyrmisis",
+  "authors": [
+    {"name": "wyrmisis", "discord": "wyrmisis#8136"}
+  ],
+  "library": true,
+  "minimumCoreVersion": "0.8.8",
+  "esmodules": [
+    "dist/bundle.js"
+  ]
+}
