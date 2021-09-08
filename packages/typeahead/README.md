@@ -22,6 +22,7 @@ An example key-value structure that you can pass in could look something like th
 ## CSS Variables
 
 ### The input field
+
 | Name                                 | Description                                                                          |
 | :--:                                 | :--:                                                                                 |
 | --typeahead-input-field-color | The text color for the input field that filters through options. |
@@ -31,6 +32,7 @@ An example key-value structure that you can pass in could look something like th
 | --typeahead-input-field-font-family | The font family for the input field that filters through options. |
 
 ### The selected items in the input field
+
 | Name                                 | Description                                                                          |
 | :--:                                 | :--:                                                                                 |
 | --typeahead-input-selected-color | The text color for a selected option that's displayed in the input field of the component. |
@@ -43,6 +45,7 @@ An example key-value structure that you can pass in could look something like th
 | --typeahead-input-selected-remove-button-font-family | The font family for the remove button on a selected option that sits in the component's input field. |
 
 ### The option list
+
 | Name                                 | Description                                                                          |
 | :--:                                 | :--:                                                                                 |
 | --typeahead-option-color | The text color for an unselected typeahead option. |
