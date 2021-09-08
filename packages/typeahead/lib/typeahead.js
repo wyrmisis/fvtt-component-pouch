@@ -3,7 +3,7 @@ import {customElement, property, state} from 'lit/decorators.js';
 import styleVars from './styleVars.js';
 
 @customElement('pouch-typeahead')
-export class Typeahead extends LitElement {
+export default class Typeahead extends LitElement {
   // Form related properties/methods
   static formAssociated = true;
 

@@ -3,7 +3,7 @@ import {customElement, property} from 'lit/decorators.js';
 import styleVars from './styleVars.js';
 
 @customElement('pouch-accordion')
-export class Accordion extends LitElement {
+export default class Accordion extends LitElement {
   static styles = css`
     :host {}
   `;
