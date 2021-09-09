@@ -165,6 +165,9 @@ export default class Typeahead extends LitElement {
   @property({type: Object})
   options = {};
 
+  @property({type: Boolean})
+  single = false;
+
   @state()
   _query = '';
 
@@ -189,11 +192,18 @@ export default class Typeahead extends LitElement {
     else
       this._addSelection(optionKey);
 
+    if (this.single)
+      this.shadowRoot
+        .querySelector('pouch-typeahead-query')
+        .reset();
+
     this._notifyOfChange();
   }
 
   _addSelection(optionKey) {
-    this.value = [...this._selected, optionKey].join(',');
+    this.value = (this.single) 
+      ? [optionKey].join(',')
+      : [...this._selected, optionKey].join(',');
   }
 
   _removeSelection(optionKey) {
