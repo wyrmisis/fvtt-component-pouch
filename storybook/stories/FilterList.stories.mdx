@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { html } from 'lit';
+import FilterList from "@component-pouch/filter-list";
+
+<Meta
+  title="Components/Filter List"
+  component="pouch-filter-list"
+  argTypes={{}} />
+
+export const Template = ({ clamped }) => html`
+  <pouch-filter-list>
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
+    <li>Two-Two</li>
+    <li>Two-Three</li>
+    <li>Six</li>
+    <li>Seven</li>
+    <li>Eight</li>
+    <li>Nine</li>
+    <li>Zero</li>
+  </pouch-filter-list>
+`;
+
+# Filter List
+
+`<pouch-filter-list />` is a component that, given at least one `<li />`, will create a filterable unordered list element.
+
+## CSS Variables
+
+| Name                            | Description                                     |
+| :--:                            | :--:                                            |
+| --filter-list-input-font-family | The query input field's font family             |
+| --filter-list-input-font-size   | The query input field's font size               |
+| --filter-list-input-font-color  | The query input field's font color              |
+| --filter-list-input-background  | The query input field's background              |
+| --filter-list-item-font-family  | The individual filtered list items' font family |
+| --filter-list-item-font-size    | The individual filtered list items' font size   |
+| --filter-list-item-font-color   | The individual filtered list items' font color  |
+| --filter-list-item-background   | The individual filtered list items' background  |
+
+## Slots
+
+| Name    | Description                                              | Default                   |
+| ------- | -------------------------------------------------------- | ------------------------- |
+| Default | A container for the list of `<li />` elements. | `""` |
+
+## Examples
+
+### A simple FilterList
+
+<Canvas>
+  <Story name="Default" args={{ }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

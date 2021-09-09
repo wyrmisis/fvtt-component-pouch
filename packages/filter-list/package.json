@@ -1,0 +1,29 @@
+{
+  "name": "@component-pouch/filter-list",
+  "version": "0.0.1",
+  "description": "A list that can be filtered through an input field.",
+  "author": "Tim Snyder <tim.snyder.work@gmail.com>",
+  "homepage": "https://github.com/wyrmisis/fvtt-component-pouch#readme",
+  "license": "ISC",
+  "main": "lib/filter-list.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyrmisis/fvtt-component-pouch.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wyrmisis/fvtt-component-pouch/issues"
+  },
+  "dependencies": {
+    "lit": "^2.0.0-rc.4"
+  }
+}

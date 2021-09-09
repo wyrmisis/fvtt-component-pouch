@@ -28,6 +28,7 @@
   "dependencies": {
     "@component-pouch/accordion": "^0.0.1",
     "@component-pouch/typeahead": "^0.0.1",
+    "@component-pouch/filter-list": "^0.0.1",
     "lit": "^2.0.0-rc.4"
   },
   "devDependencies": {
