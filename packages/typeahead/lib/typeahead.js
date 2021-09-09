@@ -139,6 +139,21 @@ export default class Typeahead extends LitElement {
       background: var(--typeahead-option-hover-background);
       /* Hovered item background variable */
     }
+
+    :host .typeahead__no-matches {
+      display: block;
+      width: 100%;
+      padding: .25em 1em;
+
+      font-size: 1em;
+      line-height: 1.4em;
+      font-style: italic;
+
+      color: var(--typeahead-option-color);
+      background: var(--typeahead-option-background);
+      border: var(--typeahead-option-border);
+      font-family: var(--typeahead-option-font-family);
+    }
   `];
 
   @property()
@@ -207,10 +222,21 @@ export default class Typeahead extends LitElement {
         }), {})
       : this.options;
 
-    return Object.keys(queriedOptions).map(key => html`
-      <li
-        class="typeahead__option"
-        ?aria-selected="${this._selected.includes(key)}">
+    if (Object.keys(queriedOptions).length) {
+      return Object.keys(queriedOptions).map(key => html`
+        <li
+          class="typeahead__option"
+          ?aria-selected="${this._selected.includes(key)}">
+          <button
+            @click="${this._onOptionClicked}"
+            data-option-key="${key}">
+            ${this.options[key]}
+          </button>
+        </li>
+      `);
+    } else
+      return html`<span class="typeahead__no-matches">No matches</span>`;
+  }
         <button
           @click="${this._onOptionClicked}"
           data-option-key="${key}">
