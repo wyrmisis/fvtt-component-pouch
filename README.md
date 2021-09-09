@@ -33,6 +33,7 @@ Using a component is pretty easy:
 
 * [pouch-accordion](https://wyrmisis.github.io/fvtt-component-pouch/?path=/story/components-accordion--default-story)
 * [pouch-typeahead](https://wyrmisis.github.io/fvtt-component-pouch/?path=/story/components-typeahead--default-story)
+* [pouch-filter-list](https://wyrmisis.github.io/fvtt-component-pouch/?path=/story/components-filter-list--default-story)
 
 ## Contributing
 
