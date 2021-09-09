@@ -59,7 +59,13 @@ export default class Typeahead extends LitElement {
       flex: 0 1 auto;
       padding: .25em .5em;
       margin-right: .5em;
+    }
 
+    :host(:focus-within) .typeahead__selected--single {
+      display: none;
+    }
+
+    :host .typeahead__selected--multi {
       color: var(--typeahead-input-selected-color);
       background: var(--typeahead-input-selected-background);
       border: var(--typeahead-input-selected-border);
@@ -156,7 +162,7 @@ export default class Typeahead extends LitElement {
     }
   `];
 
-  @property()
+  @property({type: String})
   name = "";
 
   @property({reflect: true})
@@ -247,33 +253,39 @@ export default class Typeahead extends LitElement {
     } else
       return html`<span class="typeahead__no-matches">No matches</span>`;
   }
+
+  _renderSelectedOptions(key) {
+    return html`
+      <span class="typeahead__selected typeahead__selected--multi">
+        <span>${this.options[key]}</span>
         <button
-          @click="${this._onOptionClicked}"
-          data-option-key="${key}">
-          ${this.options[key]}
+          data-option-key="${key}"
+          @click="${this._onOptionClicked}">
+          &times;
         </button>
-      </li>
-    `);
+      </span>
+    `;
+  }
+
+  _renderSingleOption(key) {
+    return html`
+      <span class="typeahead__selected typeahead__selected--single">
+        ${this.options[key]}
+      </span>
+    `
   }
 
   render() {
-    const selectedItems = this._selected.map(key =>
-      html`
-        <span class="typeahead__selected">
-          <span>${this.options[key]}</span>
-          <button
-            data-option-key="${key}"
-            @click="${this._onOptionClicked}">
-            &times;
-          </button>
-        </span>
-    `);
+    const selectedItems = (this.single)
+      ? this._selected.map((key) => this._renderSingleOption(key))
+      : this._selected.map((key) => this._renderSelectedOptions(key));
 
     return html`
       <div class="typeahead__input">
         ${selectedItems}
         <pouch-typeahead-query
           name="${this.name}.query"
+          .value=${this._query}
           @keyup="${this._onUpdateQuery}" />
       </div>
       <ul class="typeahead__options" part="options">
@@ -310,6 +322,10 @@ class TypeaheadQuery extends LitElement {
 
   @property()
   name = '';
+
+  reset() {
+    this.shadowRoot.querySelector('input').value = '';
+  }
 
   onChange(evt) {
     this.value = evt.target.value;
