@@ -18,6 +18,8 @@ An example key-value structure that you can pass in could look something like th
 | options | `object`  | An object of key-value pairs. The key can be any valid JavaScript object key name, while the value should be a `String` or `Number` | `{}` |
 | value   | `string`  | A comma-separated list of the keys selected in the typeahead. | `""` |
 | name    | `string`  | The field's name; it should map to a data property in your Foundry application. | `""` |
+| single  | `boolean` | A flag that tells the component to work in single mode. | `false` |
+
 
 ## CSS Variables
 
