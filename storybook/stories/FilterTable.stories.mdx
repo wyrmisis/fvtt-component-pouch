@@ -1,0 +1,124 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { html } from 'lit';
+import FilterTable from "@component-pouch/filter-table";
+import mockdata from './mocks/mock-json.json';
+
+<Meta
+  title="Components/Filter Table"
+  component="pouch-filter-table"
+  argTypes={{}} />
+
+export const Template = ({
+  data
+}) => html`
+  <pouch-filter-table .data="${data}" />
+`;
+
+export const HeadingsTemplate = ({
+  titles,
+  data
+}) => html`
+  <pouch-filter-table
+    .titles="${titles}"
+    .data="${data}">
+  </pouch-filter-table>
+`;
+
+export const TemplatesTemplate = ({
+  titles,
+  data,
+  templates
+}) => html`
+  <pouch-filter-table
+    .titles="${titles}"
+    .data="${data}"
+    .templates="${templates}" />
+`;
+
+export const ActionsTemplate = ({
+  titles,
+  data,
+  actions
+}) => html`
+  <pouch-filter-table
+    .data="${data}"
+    .actions="${actions}">
+  </pouch-filter-table>
+`;
+
+# Filter Table
+
+`<pouch-filter-table />` is a component that, given at least one `<li />`, will create a filterable unordered list element.
+
+## CSS Variables
+
+| Name                            | Description                                     |
+| :--:                            | :--:                                            |
+| --filter-list-input-font-family | The query input field's font family             |
+| --filter-list-input-font-size   | The query input field's font size               |
+| --filter-list-input-font-color  | The query input field's font color              |
+| --filter-list-input-background  | The query input field's background              |
+| --filter-list-item-font-family  | The individual filtered list items' font family |
+| --filter-list-item-font-size    | The individual filtered list items' font size   |
+| --filter-list-item-font-color   | The individual filtered list items' font color  |
+| --filter-list-item-background   | The individual filtered list items' background  |
+
+## Slots
+
+| Name    | Description                                              | Default                   |
+| ------- | -------------------------------------------------------- | ------------------------- |
+| Default | A container for the list of `<li />` elements. | `""` |
+
+## Examples
+
+### A simple FilterList
+
+<Canvas>
+  <Story name="Default" args={{
+    data: mockdata
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### With Specified Headings
+
+<Canvas>
+  <Story name="With Specified Headings" args={{
+    titles: {
+      _id: "ID",
+      isActive: "Active?",
+      picture: "A picture",
+      latitude: "Lat.",
+      longitude: "Lon."
+    },
+    data: mockdata
+  }}>
+    {HeadingsTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### With Templates
+
+<Canvas>
+  <Story name="With Templates" args={{
+    titles: {
+      _id: "ID",
+      isActive: "Active?",
+      picture: "A picture",
+      latitude: "Lat.",
+      longitude: "Lon."
+    },
+    data: mockdata,
+    templates: {
+      isActive: (val, key, index) => html`
+        <input type="checkbox" ?checked="${val}" @change="${(evt) => console.info(key, index, evt.target.checked)}" />
+      `,
+      picture: (val) => html`
+        <img src="${val}" />
+      `
+    }
+  }}>
+    {TemplatesTemplate.bind({})}
+  </Story>
+</Canvas>
